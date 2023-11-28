@@ -1,4 +1,3 @@
-
 //begin script when window loads
 window.onload = setMap;
 
@@ -41,9 +40,18 @@ function setMap(){
         console.log(allCountries);
         console.log(topFifteen);
 
-        //translate europe TopoJSON
-        var worldCountries = topojson.feature(allCountries, allCountries.objects.worldCountries),
-            selectCountries = topojson.feature(topFifteen, topFifteen.objects.selectCountries).features;
+
+        // if (typeof allCountries !== 'undefined' && allCountries !== null && typeof topFifteen !== 'undefined' && topFifteen !== null) {
+        //     // Now it's safe to access allCountries.objects.worldCountries and topFifteen.objects.selectCountries
+        //     var worldCountries = topojson.feature(allCountries, allCountries.objects.worldCountries),
+        //         selectCountries = topojson.feature(topFifteen, topFifteen.objects.selectCountries).features;
+        // } else {
+        //     console.error('allCountries or topFifteen is not defined');
+        // }
+
+        var worldCountries = allCountries;
+        var selectCountries = topFifteen, topFifteen;
+
 
         //add Europe countries to map
         var countries = map.append("path")
