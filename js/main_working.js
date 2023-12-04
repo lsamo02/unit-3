@@ -1,3 +1,4 @@
+
 //begin script when window loads
 window.onload = setMap;
 
@@ -34,34 +35,29 @@ function setMap(){
 
     function callback(data) {
         var csvData = data[0],
-            allCountries = data[1],
+            world = data[1],
             topFifteen = data[2];
         console.log(csvData);
-        console.log(allCountries);
-        console.log(topFifteen);
+        console.log(world);
+        console.log('selecct', topFifteen);
 
 
-        // if (typeof allCountries !== 'undefined' && allCountries !== null && typeof topFifteen !== 'undefined' && topFifteen !== null) {
-        //     // Now it's safe to access allCountries.objects.worldCountries and topFifteen.objects.selectCountries
-        //     var worldCountries = topojson.feature(allCountries, allCountries.objects.worldCountries),
-        //         selectCountries = topojson.feature(topFifteen, topFifteen.objects.selectCountries).features;
-        // } else {
-        //     console.error('allCountries or topFifteen is not defined');
-        // }
+        var backgroundCountries = world;
+        var top15MostPopulousCountries = topojson.feature(data[2], data[2].objects.Top15MostPopulousCountries).features;
 
-        var worldCountries = allCountries;
-        var selectCountries = topFifteen, topFifteen;
+        console.log(backgroundCountries);
+        console.log('look at me', top15MostPopulousCountries);
 
 
         //add Europe countries to map
         var countries = map.append("path")
-            .datum(worldCountries)
+            .datum(backgroundCountries)
             .attr("class", "countries")
             .attr("d", path);
 
         //add France regions to map
         var regions = map.selectAll(".regions")
-            .data(selectCountries)
+            .data(top15MostPopulousCountries)
             .enter()
             .append("path")
             .attr("class", function(d){
