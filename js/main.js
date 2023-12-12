@@ -28,7 +28,7 @@ function setMap(){
 
     //use Promise.all to parallelize asynchronous data loading
     var promises = [];
-    promises.push(d3.csv("data/WorldBank_ForestAreaSqKm_1990_2021_edited.csv"));                    
+    promises.push(d3.csv("data/WorldBank.csv"));                    
     promises.push(d3.json("data/BackgroundCountries.topojson"));                   
     promises.push(d3.json("data/Top15MostPopulousCountries.topojson"));                                     
     Promise.all(promises).then(callback);
