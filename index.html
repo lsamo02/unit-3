@@ -7,25 +7,33 @@
 
         <!--put your external stylesheet links here-->
         <link rel="stylesheet" href="css/style.css">
-        <!--[if IE<9]>
-            <link rel="stylesheet" href="css/style.ie.css">
-        <![endif]-->
 
-         <!--you can also place internal styles here;
-             place these within <style> tags-->
-        
+        <style>
+            #content {
+                display:inline-block;
+            }
+    
+            /* #map, #chart-container {
+            flex: 1; /* This will make both containers take up equal space */
+            /* margin: 5px; This adds some space around the containers */
+        /* }  */
+        </style>
     </head>
 
     <body>
         <!--put your initial page content here-->
+        <nav id= "title" class= "navbar navbar-expand-md navbar-dark fixed-top title">
+            <div class = "container">
+                <a class= "navbar-brand">Forested Area in sq km of Top 15 Most Populous Countries</a>
+            </div>
+        </nav>
 
-        <!--you can also use this space for internal scripts;
-        place these within <script> tags-->
+        <div id="content">
+            <div id="map"></div>
+            <div id="chart-container"></div>
+        </div>
 
 
-
-
-            
         <!--put your external script links here-->
         <script type="text/javascript" src="lib/topojson.js"></script>
         <script src="https://d3js.org/d3.v7.min.js"></script>
